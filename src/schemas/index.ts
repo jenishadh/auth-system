@@ -18,7 +18,7 @@ export const passwordSchema = z
   .trim();
 
 export const registerSchema = z.object({
-  fullName: z.string().min(2, { message: "Name is required." }).trim(),
+  name: z.string().min(2, { message: "Name is required." }).trim(),
   email: emailSchema,
   password: passwordSchema,
 });
