@@ -1,7 +1,7 @@
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { RegisterForm } from "@/components/auth/register-form";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <section>
       <CardWrapper
