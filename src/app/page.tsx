@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { auth } from "@/auth";
 import { Check } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -15,7 +16,8 @@ const features = [
   "👥 Authorization",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
   return (
     <main className="py-20 font-mono">
       <MaxWidthWrapper className="flex flex-col items-center gap-8">
@@ -36,24 +38,35 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <div className="flex gap-4">
+        {session ? (
           <Link
             className={buttonVariants({
               size: "lg",
             })}
-            href="/login"
+            href="/settings"
           >
-            Sign in
+            Settings
           </Link>
-          <Link
-            className={buttonVariants({
-              size: "lg",
-            })}
-            href="/register"
-          >
-            Sign up
-          </Link>
-        </div>
+        ) : (
+          <div className="flex gap-4">
+            <Link
+              className={buttonVariants({
+                size: "lg",
+              })}
+              href="/login"
+            >
+              Sign in
+            </Link>
+            <Link
+              className={buttonVariants({
+                size: "lg",
+              })}
+              href="/register"
+            >
+              Sign up
+            </Link>
+          </div>
+        )}
       </MaxWidthWrapper>
     </main>
   );
