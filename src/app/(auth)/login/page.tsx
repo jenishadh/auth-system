@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { LoginForm } from "@/components/auth/login-form";
 
@@ -12,7 +14,9 @@ export default function LoginPage() {
         linkHref="/register"
         showSocial
       >
-        <LoginForm />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LoginForm />
+        </Suspense>
       </CardWrapper>
     </section>
   );
